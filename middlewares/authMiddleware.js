@@ -1,18 +1,11 @@
-// authMiddleware.js
-
-// Middleware to check for a valid API key
 const apiKeyMiddleware = (req, res, next) => {
-  const apiKey = req.header('API_KEY');  // Look for the API key in the 'API_KEY' header
-
-  console.log("API Key from request:", apiKey); // Log the key from the request
-  console.log("API Key from environment variable length:", process.env.API_KEY ? process.env.API_KEY.length : 0); // Log the LENGTH of the env var (safer than logging the key)
-
+  const apiKey = req.header('x-api-key');  // Fetching the correct header
+  console.log("Received API Key: ", apiKey);  // Log the received key
+  
   // Check if the API key from the request matches the environment variable
-  if (!apiKey || apiKey !== process.env.API_KEY) {  // Use the correct environment variable name
+  if (!apiKey || apiKey !== process.env.API_KEY) {
     return res.status(401).json({ message: 'Unauthorized: Invalid or missing API key' });
   }
 
   next();  // Proceed to the next middleware or route handler if the API key is valid
 };
-
-module.exports = apiKeyMiddleware;
