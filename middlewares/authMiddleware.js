@@ -2,7 +2,7 @@
 
 // Middleware to check for a valid API key
 const apiKeyMiddleware = (req, res, next) => {
-  const apiKey = req.header('x-api-key');  // Look for the API key in the 'x-api-key' header
+  const apiKey = req.header('API_KEY');  // Look for the API key in the 'API_KEY' header
 
   // Check if the API key from the request matches the environment variable
   if (!apiKey || apiKey !== process.env.API_KEY) {  // Use the correct environment variable name
