@@ -25,5 +25,13 @@
     "mongoose": "^8.19.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladymereBilan/Fitness-Tracker-Api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VladymereBilan/Fitness-Tracker-Api/issues"
+  },
+  "homepage": "https://github.com/VladymereBilan/Fitness-Tracker-Api#readme"
 }
