@@ -7,7 +7,9 @@ const {
   addWorkout,
   updateWorkout,
   patchWorkout,
-  deleteWorkout
+  deleteWorkout,
+  getWorkoutById,
+  getWorkoutSource
 } = require('../controllers/workoutController');
 
 
@@ -132,11 +134,61 @@ const {
  *       200:
  *         description: Deleted successfully
  */
+/**
+ * @swagger
+ * /api/v1/workout/source/info:
+ *   get:
+ *     summary: Get API source information
+ *     tags: [Workouts]
+ *     responses:
+ *       200:
+ *         description: API source details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 source:
+ *                   type: string
+ *                 version:
+ *                   type: string
+ *                 maintainer:
+ *                   type: string
+ *                 message:
+ *                   type: string
+ */
 
+/**
+ * @swagger
+ * /api/v1/workout/{id}:
+ *   get:
+ *     summary: Get a workout by ID
+ *     tags: [Workouts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The workout ID
+ *     responses:
+ *       200:
+ *         description: Workout found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Workout'
+ *       404:
+ *         description: Workout not found
+ */
 
-// ------------------ ACTUAL ROUTES ------------------
+//ACTUAL ROUTES
 router.get('/', getWorkouts);
 router.post('/', validateWorkout, addWorkout);
+
+router.get('/source/info', getWorkoutSource);   // <-- Must be before /:id
+router.get('/:id', getWorkoutById);
+
 router.put('/:id', validateWorkout, updateWorkout);
 router.patch('/:id', patchWorkout);
 router.delete('/:id', deleteWorkout);

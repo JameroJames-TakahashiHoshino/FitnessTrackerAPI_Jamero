@@ -10,6 +10,30 @@ const getWorkouts = async (req, res) => {
   }
 };
 
+// Get workout by ID
+const getWorkoutById = async (req, res) => {
+  try {
+    const workout = await Workout.findById(req.params.id);
+
+    if (!workout)
+      return res.status(404).json({ message: 'Workout not found' });
+
+    res.status(200).json(workout);
+  } catch (error) {
+    res.status(400).json({ message: 'Invalid workout ID' });
+  }
+};
+
+// Workout source info
+const getWorkoutSource = (req, res) => {
+  res.status(200).json({
+    source: "Fitness Tracker API",
+    version: "1.0",
+    maintainer: "James",
+    message: "Workout data provided for testing and training."
+  });
+};
+
 // Add new workout
 const addWorkout = async (req, res) => {
   try {
@@ -66,7 +90,7 @@ const patchWorkout = async (req, res) => {
   }
 };
 
-// Delete
+// Delete workout
 const deleteWorkout = async (req, res) => {
   try {
     const workout = await Workout.findByIdAndDelete(req.params.id);
@@ -85,5 +109,7 @@ module.exports = {
   addWorkout,
   updateWorkout,
   patchWorkout,
-  deleteWorkout
+  deleteWorkout,
+  getWorkoutById,
+  getWorkoutSource
 };
