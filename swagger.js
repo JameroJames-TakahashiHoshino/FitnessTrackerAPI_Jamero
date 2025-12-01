@@ -9,7 +9,7 @@ const options = {
       description: 'API for tracking workouts, progress, and users.',
     },
     servers: [
-      { url: 'http://localhost:3000' }
+      { url: 'http://localhost:3000' },
       { url: 'https://fitness-tracker-api-jamero.vercel.app' }
     ],
   },
