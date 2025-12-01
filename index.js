@@ -18,8 +18,14 @@ app.get('/swagger.json', (req, res) => {
 });
 
 app.get('/api-docs', (req, res) => {
-  const origin = `${req.protocol}://${req.get('host')}`;
-  const swaggerJsonUrl = `${origin}/swagger.json`;
+  // Force https in production (Vercel), keep protocol in local dev
+  const host = req.get('host');
+  const protocol =
+    process.env.VERCEL === '1' || host.includes('vercel.app')
+      ? 'https'
+      : req.protocol;
+
+  const swaggerJsonUrl = `${protocol}://${host}/swagger.json`;
 
   res.send(`
     <!DOCTYPE html>

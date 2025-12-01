@@ -10,6 +10,7 @@ const options = {
     },
     servers: [
       { url: 'http://localhost:3000' }
+      { url: 'https://fitness-tracker-api-jamero.vercel.app' }
     ],
   },
   apis: ['./routes/*.js'], // read swagger docs from routes
