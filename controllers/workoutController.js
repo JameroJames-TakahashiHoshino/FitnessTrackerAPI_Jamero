@@ -6,7 +6,7 @@ const getWorkouts = async (req, res) => {
     const workouts = await Workout.find().sort({ createdAt: -1 });
     res.status(200).json(workouts);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: 'Failed to fetch all workouts' });
   }
 };
 
@@ -29,7 +29,7 @@ const getWorkoutSource = (req, res) => {
   res.status(200).json({
     source: "Fitness Tracker API",
     version: "1.0",
-    maintainer: "James",
+    maintainer: "James,Vladymere,Ellix",
     message: "Workout data provided for testing and training."
   });
 };
@@ -44,7 +44,7 @@ const addWorkout = async (req, res) => {
       workout
     });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Failed to create workout' });
   }
 };
 
@@ -65,7 +65,7 @@ const updateWorkout = async (req, res) => {
       workout
     });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Failed to update workout' });
   }
 };
 
@@ -86,7 +86,7 @@ const patchWorkout = async (req, res) => {
       workout
     });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: 'Failed to partially update workout' });
   }
 };
 
@@ -100,7 +100,7 @@ const deleteWorkout = async (req, res) => {
 
     res.status(200).json({ message: 'Workout deleted successfully' });
   } catch (error) {
-    res.status(400).json({ message: 'Invalid workout ID' });
+    res.status(400).json({ message: 'Failed to delete the workout' });
   }
 };
 

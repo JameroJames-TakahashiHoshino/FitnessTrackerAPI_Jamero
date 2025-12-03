@@ -12,7 +12,6 @@ const {
   getWorkoutSource
 } = require('../controllers/workoutController');
 
-
 /**
  * @swagger
  * components:
