@@ -100,7 +100,7 @@ const deleteWorkout = async (req, res) => {
 
     res.status(200).json({ message: 'Workout deleted successfully' });
   } catch (error) {
-    res.status(400).json({ message: 'Failed to delete the workout' });
+    res.status(400).json({ message: 'Invalid workout ID' });
   }
 };
 
