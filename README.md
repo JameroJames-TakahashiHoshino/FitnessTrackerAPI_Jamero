@@ -1,3 +1,5 @@
+To access type https://fitness-tracker-api-jamero.vercel.app/api-docs
+
 🏋️‍♂️ Fitness Tracker API
 
 A simple REST API for tracking workouts, built with Node.js, Express, MongoDB, and Swagger/OpenAPI.
